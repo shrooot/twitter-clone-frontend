@@ -32,18 +32,7 @@ const Login = () => {
                 }, 1000);
             }
         } catch (error: any) {
-            if (error.response) {
-                let res = error.response
-                if (res.status === 400 && res.data.Error === "Incorrect password") {
-                    errorToast("Incorrect Password")
-                }
-                else if (res.status === 400 && res.data.Error === "User not found") {
-                    errorToast("User with given username does not exist")
-                }
-                else {
-                    errorToast("Internal Server Error. Please wait while we work on fixing this issue")
-                }
-            }
+            errorToast(error.message)
         }
     }
 
