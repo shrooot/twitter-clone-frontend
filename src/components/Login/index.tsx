@@ -32,7 +32,7 @@ const Login = () => {
                 }, 1000);
             }
         } catch (error: any) {
-            errorToast(error.message)
+            errorToast("Invalid username or password")
         }
     }
 

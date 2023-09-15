@@ -21,7 +21,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             if (!username || !password) throw new Error("Please fill the form correctly")
-            if (password.length < 8) throw new Error("Password should be atleast 8 characters long")
+            if (password.length < 3) throw new Error("Password should be atleast 8 characters long")
 
             const userData: ICreateUser = { username: username, password: password }
 
@@ -31,8 +31,7 @@ const Signup = () => {
             navigate("/login")
 
         } catch (error: any) {
-            console.log(error.response)
-            errorToast(error.response.data)
+            errorToast(error.message)
         }
     }
 
