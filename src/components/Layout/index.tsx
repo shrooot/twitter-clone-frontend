@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import styles from "../../stylesheets/Layout.module.css"; // Import the CSS file
 import Menubar from '../Menubar'
 import Sidebar from '../Sidebar';
@@ -11,14 +11,15 @@ interface GlobalLayoutProps {
 }
 
 const Layout = ({ children }: GlobalLayoutProps) => {
-
+    const [auth, setAuth] = useState(false)
     const navigate = useNavigate()
 
-    
+
     useEffect(() => {
         const checkAuth = async () => {
             try {
                 await axios.get(CHECK_ENDPOINT, { withCredentials: true })
+                setAuth(true)
             } catch (err: any) {
                 navigate("/login")
             }
@@ -26,14 +27,27 @@ const Layout = ({ children }: GlobalLayoutProps) => {
         checkAuth()
     }, [])
 
+    const renderHome = () => {
+        if (auth)
+            return (
+                <div className={styles.container}>
+                    <div className={styles.wrapper}>
+                        <Menubar />
+                        {children}
+                        <Sidebar />
+                    </div>
+                </div>)
+        else {
+            return <></>
+        }
+    }
+
     return (
-        <div className={styles.container}>
-            <div className={styles.wrapper}>
-                <Menubar />
-                {children}
-                <Sidebar />
-            </div>
-        </div>
+        <>
+            {
+                renderHome()
+            }
+        </>
     );
 };
 
