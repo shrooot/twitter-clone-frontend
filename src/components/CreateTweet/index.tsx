@@ -10,16 +10,16 @@ const CreateTweet = () => {
     const [imgUrl, setImgUrl] = useState("")
     const [username, setUsername] = useState("")
 
-    const getUserInfo = async () => {
-        try {
-            const response = await axios.get(USERINFO_ENDPOINT, { withCredentials: true })
-            setUsername(response.data.username)
-        } catch (error) {
-            errorToast("Error loading user info")
-        }
-    }
 
     useEffect(() => {
+        const getUserInfo = async () => {
+            try {
+                const response = await axios.get(USERINFO_ENDPOINT, { withCredentials: true })
+                setUsername(response.data.username)
+            } catch (error) {
+                errorToast("Error loading user info")
+            }
+        }
         getUserInfo()
     }, [])
 

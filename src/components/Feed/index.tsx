@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Tweet from '../Tweet';
 import styles from "../../stylesheets/Feed.module.css";
 

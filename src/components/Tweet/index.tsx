@@ -14,22 +14,6 @@ const Tweet: React.FC<PropsType> = ({ type }) => {
   const navigate = useNavigate()
   const [data, setData] = useState<TweetData[]>([])
 
-  const getFeedData = async (type: string) => {
-    try {
-      if (type === 'user') {
-        const response = await axios.get(GET_USER_TWEET_ENDPOINT, { withCredentials: true })
-        setData(response.data)
-      }
-      else {
-        const response = await axios.get(FEED_ENDPOINT, { withCredentials: true })
-        setData(response.data)
-      }
-    } catch (err) {
-      console.log(err)
-      errorToast("Error fetching data")
-    }
-  }
-
   const handleOnDelete = async (id: string) => {
     try {
       await axios.delete(DELETE_TWEET_ENDPOINT + `/${id}`, { withCredentials: true })
@@ -50,6 +34,21 @@ const Tweet: React.FC<PropsType> = ({ type }) => {
   }
 
   useEffect(() => {
+    const getFeedData = async (type: string) => {
+      try {
+        if (type === 'user') {
+          const response = await axios.get(GET_USER_TWEET_ENDPOINT, { withCredentials: true })
+          setData(response.data)
+        }
+        else {
+          const response = await axios.get(FEED_ENDPOINT, { withCredentials: true })
+          setData(response.data)
+        }
+      } catch (err) {
+        console.log(err)
+        errorToast("Error fetching data")
+      }
+    }
     getFeedData(type)
   }, [])
 

@@ -9,16 +9,16 @@ import { GET_ALL_USERS_ENDPOINT } from "../../utils/endpoints"
 const Explore = () => {
     const [userList, setUserList] = useState<IUsersList[]>([])
 
-    const getUserList = async () => {
-        try {
-            const response = await axios.get(GET_ALL_USERS_ENDPOINT, { withCredentials: true })
-            setUserList(response.data)
-        } catch (err) {
-            console.log(err)
-            errorToast("Error loading users")
-        }
-    }
     useEffect(() => {
+        const getUserList = async () => {
+            try {
+                const response = await axios.get(GET_ALL_USERS_ENDPOINT, { withCredentials: true })
+                setUserList(response.data)
+            } catch (err) {
+                console.log(err)
+                errorToast("Error loading users")
+            }
+        }
         getUserList()
     }, [])
 

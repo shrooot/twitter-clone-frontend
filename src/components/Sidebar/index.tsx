@@ -9,17 +9,17 @@ import { errorToast } from "../../utils/customToast";
 const Sidebar: React.FC = () => {
     const [userList, setUserList] = useState<IUsersList[]>([])
 
-    const getUserList = async () => {
-        try {
-            const response = await axios.get(GET_ALL_USERS_ENDPOINT, { withCredentials: true })
-            setUserList(response.data.slice(0, 3))
-        } catch (err) {
-            console.log(err)
-            errorToast("Error loading users")
-        }
-    }
-
+    
     useEffect(() => {
+        const getUserList = async () => {
+            try {
+                const response = await axios.get(GET_ALL_USERS_ENDPOINT, { withCredentials: true })
+                setUserList(response.data.slice(0, 3))
+            } catch (err) {
+                console.log(err)
+                errorToast("Error loading users")
+            }
+        }
         getUserList()
     }, [])
     return (

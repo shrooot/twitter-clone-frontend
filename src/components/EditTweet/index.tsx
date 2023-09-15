@@ -14,29 +14,29 @@ const EditTweet = () => {
     const [imgUrl, setImgUrl] = useState("")
     const [username, setUsername] = useState("")
 
-    const getUserInfo = async () => {
-        try {
-            const response = await axios.get(USERINFO_ENDPOINT, { withCredentials: true })
-            setUsername(response.data.username)
-        } catch (error) {
-            errorToast("Error loading user info")
-        }
-    }
-
-    const getTweetInfo = async () => {
-        try {
-            const response = await axios.get(TWEETBYID_ENDPOINT + `/${tweetId}`, { withCredentials: true })
-            setText(response.data.text)
-            setImgUrl(response.data.imgUrl)
-        } catch (error) {
-            errorToast("Error loading tweet")
-        }
-    }
 
     useEffect(() => {
+        const getUserInfo = async () => {
+            try {
+                const response = await axios.get(USERINFO_ENDPOINT, { withCredentials: true })
+                setUsername(response.data.username)
+            } catch (error) {
+                errorToast("Error loading user info")
+            }
+        }
+
+        const getTweetInfo = async () => {
+            try {
+                const response = await axios.get(TWEETBYID_ENDPOINT + `/${tweetId}`, { withCredentials: true })
+                setText(response.data.text)
+                setImgUrl(response.data.imgUrl)
+            } catch (error) {
+                errorToast("Error loading tweet")
+            }
+        }
         getUserInfo()
         getTweetInfo()
-    },[] )
+    }, [])
 
     const handleTweetClick = async () => {
         try {
