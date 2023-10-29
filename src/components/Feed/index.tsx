@@ -7,7 +7,7 @@ const Feed: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.tab}>Tweets</div>
+      <div className={styles.tab}>Kwotes</div>
 
       <div className={styles.tweets}>
         <Tweet type='feed' />
