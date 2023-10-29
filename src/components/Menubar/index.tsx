@@ -3,7 +3,8 @@ import {
     Search,
     Twitter,
     Logout,
-    People
+    People,
+    Discord,
 } from '../../utils/icons';
 import styles from "../../stylesheets/Menubar.module.css"
 import { useNavigate } from "react-router-dom"
@@ -47,7 +48,7 @@ const MenuBar: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.logo}>
-                <Twitter />
+                <Discord />
             </div>
             <div className={styles.optionsContainer}>
                 <div className={styles.option} onClick={() => { handleHomeClick() }}>
