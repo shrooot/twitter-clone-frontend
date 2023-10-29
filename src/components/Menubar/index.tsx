@@ -65,7 +65,7 @@ const MenuBar: React.FC = () => {
                 </div>
                 <div className={styles.option} onClick={() => { handleTweetClick() }}>
                     <div className={styles.icon}>
-                        <Twitter />
+                        <Discord />
                     </div>
                     <span className={styles.optionName}>Your Kwotes</span>
                 </div>
