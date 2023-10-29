@@ -60,7 +60,7 @@ const EditTweet = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Post Tweet</h2>
+            <h2>Edit Kwote</h2>
             <div className={styles.createTweetWrapper}>
                 <span className={styles.username}>@{username}</span>
                 <textarea name="tweet" id="tweet" cols={30} rows={10} value={text ? text : ""} onChange={(e) => { setText(e.target.value) }} className={styles.tweetArea} />
@@ -68,7 +68,7 @@ const EditTweet = () => {
                 <textarea name="url" id="url" cols={30} rows={5} value={imgUrl ? imgUrl : ""} onChange={(e) => { setImgUrl(e.target.value) }} className={styles.tweetArea} />
 
                 <button className={styles.tweetButton} onClick={() => { handleTweetClick() }}>
-                    Edit Tweet
+                    Edit Kwote
                 </button>
 
             </div>
